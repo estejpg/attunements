@@ -1,0 +1,29 @@
+/* Attune managed: blue-messages */
+/* Codex uses data-user-message-bubble; the remaining selectors support ChatGPT surfaces. */
+[data-attune-host-roles~="chatgpt.conversation"] :is(
+  [data-user-message-bubble],
+  [data-message-author-role="user"] > div > div,
+  [data-message-author-role="user"] > div > div > div,
+  article[data-turn="user"] > div > div,
+  article[data-turn="user"] > div > div > div
+),
+:is(
+  [data-user-message-bubble],
+  [data-message-author-role="user"] > div > div,
+  [data-message-author-role="user"] > div > div > div,
+  article[data-turn="user"] > div > div,
+  article[data-turn="user"] > div > div > div
+) {
+  background: #007aff !important;
+  color: #fff !important;
+}
+
+[data-attune-host-roles~="chatgpt.conversation"] :is([data-user-message-bubble], [data-message-author-role="user"], article[data-turn="user"]) :is(p, span, code, pre, li, strong, em, a),
+:is([data-user-message-bubble], [data-message-author-role="user"], article[data-turn="user"]) :is(p, span, code, pre, li, strong, em, a) {
+  color: #fff !important;
+}
+
+[data-attune-host-roles~="chatgpt.conversation"] :is([data-user-message-bubble], [data-message-author-role="user"], article[data-turn="user"]) :is(svg, button),
+:is([data-user-message-bubble], [data-message-author-role="user"], article[data-turn="user"]) :is(svg, button) {
+  color: #fff;
+}

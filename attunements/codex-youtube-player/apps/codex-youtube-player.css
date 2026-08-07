@@ -1,0 +1,9 @@
+/* Attune managed: codex-youtube-player */
+#attune-codex-youtube-player { position: fixed; right: 18px; bottom: 18px; z-index: 2147483647; width: min(440px, calc(100vw - 36px)); overflow: hidden; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: 10px; background: color-mix(in srgb, Canvas 94%, CanvasText 6%); color: CanvasText; box-shadow: 0 20px 60px rgb(0 0 0 / 38%); font: 12px/1.35 ui-sans-serif, system-ui, sans-serif; }
+#attune-codex-youtube-player header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid color-mix(in srgb, CanvasText 14%, transparent); }
+#attune-codex-youtube-player strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#attune-codex-youtube-player .attune-youtube-status { color: color-mix(in srgb, CanvasText 62%, transparent); white-space: nowrap; }
+#attune-codex-youtube-player iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; }
+#attune-codex-youtube-player footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 12px; }
+#attune-codex-youtube-player button, #attune-codex-youtube-player a { appearance: none; border: 0; border-radius: 5px; padding: 6px 8px; background: color-mix(in srgb, CanvasText 11%, transparent); color: CanvasText; cursor: pointer; font: inherit; text-decoration: none; }
+#attune-codex-youtube-player button:hover, #attune-codex-youtube-player a:hover { background: color-mix(in srgb, CanvasText 18%, transparent); }

@@ -1,0 +1,41 @@
+{
+  "manifestVersion": 2,
+  "name": "ChatGPT Web → Codex",
+  "description": "Copy the current ChatGPT conversation into a new filesystem-backed Codex chat.",
+  "preview": "preview.png",
+  "targets": {
+    "Google Chrome": {
+      "intent": "Add a Send to Codex slash command to ChatGPT and hand the visible conversation to Attune.",
+      "bindings": {
+        "conversation": {
+          "role": "chatgpt.conversation",
+          "required": true
+        },
+        "composer": {
+          "role": "chatgpt.composer",
+          "required": true
+        },
+        "attachmentMenu": {
+          "role": "chatgpt.attachmentMenu",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/chrome-chatgpt-to-codex.css"
+      ],
+      "script": "apps/chrome-chatgpt-to-codex.js"
+    },
+    "Codex": {
+      "intent": "Codex chats are created directly in the local Codex session store; no renderer polling is required.",
+      "bindings": {
+        "document": {
+          "role": "document.body",
+          "required": true
+        }
+      },
+      "styles": [
+        "apps/codex-chatgpt-import.css"
+      ]
+    }
+  }
+}

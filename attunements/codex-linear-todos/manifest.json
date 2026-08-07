@@ -1,0 +1,50 @@
+{
+  "manifestVersion": 2,
+  "name": "Codex: Linear To-dos",
+  "description": "Open your visible Linear to-dos in a focused modal from Codex.",
+  "preview": "preview.png",
+  "targets": {
+    "Linear": {
+      "intent": "Publish the visible to-do issues from Linear to the local Attune bridge.",
+      "bindings": {
+        "workspace": {
+          "role": "linear.workspace",
+          "required": true
+        },
+        "issueList": {
+          "role": "linear.issueList",
+          "required": true
+        },
+        "issueDetail": {
+          "role": "linear.issueDetail",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/linear-todos-source.css"
+      ],
+      "script": "apps/linear-todos-source.js"
+    },
+    "Codex": {
+      "intent": "Add a top-left To-dos button that opens a Linear tasks modal to the right of the Codex sidebar.",
+      "bindings": {
+        "main": {
+          "role": "codex.primaryChat",
+          "required": true
+        },
+        "appShell": {
+          "role": "codex.appShell",
+          "required": true
+        },
+        "document": {
+          "role": "document.body",
+          "required": true
+        }
+      },
+      "styles": [
+        "apps/codex-linear-todos.css"
+      ],
+      "script": "apps/codex-linear-todos.js"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "catalogVersion": 1,
+  "themes": [
+    { "id": "arrakis", "version": "1.0.0", "path": "themes/arrakis" },
+    { "id": "cyberpunk", "version": "1.0.0", "path": "themes/cyberpunk" },
+    { "id": "starry-night", "version": "1.0.0", "path": "themes/starry-night" },
+    { "id": "tama-river", "version": "1.0.0", "path": "themes/tama-river" }
+  ],
+  "attunements": [
+    { "id": "blue-messages", "version": "1.0.0", "path": "attunements/blue-messages" },
+    { "id": "chatgpt-claude-models", "version": "1.0.0", "path": "attunements/chatgpt-claude-models" },
+    { "id": "chatgpt-to-codex", "version": "1.0.0", "path": "attunements/chatgpt-to-codex" },
+    { "id": "codex-git-actions", "version": "1.0.0", "path": "attunements/codex-git-actions" },
+    { "id": "codex-kanban", "version": "1.0.0", "path": "attunements/codex-kanban" },
+    { "id": "codex-linear-todos", "version": "1.0.0", "path": "attunements/codex-linear-todos" },
+    { "id": "codex-multi-chat", "version": "1.0.0", "path": "attunements/codex-multi-chat" },
+    { "id": "codex-youtube-player", "version": "1.0.0", "path": "attunements/codex-youtube-player" },
+    { "id": "cursor-linear-todos", "version": "1.0.0", "path": "attunements/cursor-linear-todos" },
+    { "id": "linear-completed-to-slack", "version": "1.0.0", "path": "attunements/linear-completed-to-slack" }
+  ]
+}

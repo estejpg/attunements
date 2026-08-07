@@ -1,0 +1,20 @@
+{
+  "manifestVersion": 2,
+  "name": "Codex: Blue messages",
+  "description": "Give your ChatGPT messages the familiar iPhone blue treatment.",
+  "preview": "preview.png",
+  "targets": {
+    "ChatGPT": {
+      "intent": "Make user messages iPhone blue (#007AFF) with white text.",
+      "bindings": {
+        "conversation": {
+          "role": "chatgpt.conversation",
+          "required": true
+        }
+      },
+      "styles": [
+        "apps/chatgpt-blue-messages.css"
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "manifestVersion": 2,
+  "name": "Cursor: Linear To-dos",
+  "description": "Open your visible Linear to-dos in a focused modal from Cursor.",
+  "preview": "preview.png",
+  "targets": {
+    "Linear": {
+      "intent": "Publish the visible to-do issues from Linear to the local Attune bridge.",
+      "bindings": {
+        "workspace": {
+          "role": "linear.workspace",
+          "required": true
+        },
+        "issueList": {
+          "role": "linear.issueList",
+          "required": true
+        },
+        "issueDetail": {
+          "role": "linear.issueDetail",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/linear-todos-source.css"
+      ],
+      "script": "apps/linear-todos-source.js"
+    },
+    "Cursor": {
+      "intent": "Add a To-dos button that opens a Linear tasks modal in Cursor.",
+      "bindings": {
+        "workbench": {
+          "role": "cursor.workbench",
+          "required": true
+        },
+        "titlebar": {
+          "role": "cursor.titlebar",
+          "required": false
+        },
+        "document": {
+          "role": "document.body",
+          "required": true
+        }
+      },
+      "styles": [
+        "apps/cursor-linear-todos.css"
+      ],
+      "script": "apps/cursor-linear-todos.js"
+    }
+  }
+}

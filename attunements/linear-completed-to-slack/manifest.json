@@ -1,0 +1,50 @@
+{
+  "manifestVersion": 2,
+  "name": "Linear completed → Slack DM",
+  "description": "Send Madhavan Panchangam a Slack DM with issue details when a Linear task is completed.",
+  "preview": "preview.png",
+  "targets": {
+    "Linear": {
+      "intent": "Detect native Linear completion actions and publish the completed issue to the local Attune bridge.",
+      "bindings": {
+        "workspace": {
+          "role": "linear.workspace",
+          "required": true
+        },
+        "issueDetail": {
+          "role": "linear.issueDetail",
+          "required": false
+        },
+        "statusControl": {
+          "role": "linear.statusControl",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/linear-completion-source.css"
+      ],
+      "script": "apps/linear-completion-source.js"
+    },
+    "Slack": {
+      "intent": "Open Madhavan Panchangam's DM, fill Slack's native composer, and click Send once per completion.",
+      "bindings": {
+        "workspace": {
+          "role": "slack.workspace",
+          "required": true
+        },
+        "composer": {
+          "role": "slack.composer",
+          "required": false
+        },
+        "sendButton": {
+          "role": "slack.sendButton",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/slack-completion-dm.css"
+      ],
+      "script": "apps/slack-completion-dm.js"
+    }
+  }
+}

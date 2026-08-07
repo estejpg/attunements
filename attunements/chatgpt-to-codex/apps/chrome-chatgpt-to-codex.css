@@ -1,0 +1,5 @@
+/* Attune managed: chatgpt-to-codex browser source v20 */
+#attune-chatgpt-to-codex { display: none !important; }
+#attune-codex-command-option { display: block; width: 100%; } #attune-codex-command-option .__menu-item { width: 100%; } #attune-codex-command-option .attune-command-icon { display: grid; width: 22px; height: 22px; flex: 0 0 22px; place-items: center; border-radius: 6px; background: color-mix(in srgb, CanvasText 11%, transparent); font-size: 12px; font-weight: 750; }
+#attune-codex-command-option .__menu-item:hover, #attune-codex-command-option .__menu-item[data-highlighted] { background: var(--token-main-surface-secondary, rgb(255 255 255 / 8%)); }
+#attune-codex-command-toast { position: fixed; right: 22px; bottom: 94px; z-index: 2147483647; max-width: min(340px, calc(100vw - 44px)); border-radius: 9px; padding: 9px 12px; background: CanvasText; color: Canvas; box-shadow: 0 10px 30px rgb(0 0 0 / 24%); font: 600 12px/1.3 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }

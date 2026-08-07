@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="YouTube in Codex attunement preview">
+  <rect width="960" height="600" fill="#111315"/>
+  <rect x="34" y="30" width="892" height="540" rx="14" fill="#1b1e22" stroke="#353a40" stroke-width="2"/>
+  <rect x="34" y="30" width="892" height="48" rx="14" fill="#24282d"/>
+  <circle cx="64" cy="54" r="8" fill="#ff5f57"/><circle cx="88" cy="54" r="8" fill="#febc2e"/><circle cx="112" cy="54" r="8" fill="#28c840"/>
+  <rect x="66" y="108" width="318" height="21" rx="4" fill="#dce2e9"/><rect x="66" y="150" width="432" height="14" rx="3" fill="#7f8995"/><rect x="66" y="180" width="340" height="14" rx="3" fill="#59636e"/>
+  <rect x="516" y="108" width="368" height="344" rx="8" fill="#08090b" stroke="#464c55" stroke-width="2"/>
+  <path d="M650 195c0-14 15-23 27-15l93 54c12 7 12 23 0 30l-93 54c-12 8-27-1-27-15z" fill="#ff3434"/>
+  <path d="M695 214l43 35-43 35z" fill="white"/>
+  <rect x="538" y="474" width="222" height="16" rx="4" fill="#e5e9ee"/><rect x="538" y="506" width="286" height="12" rx="3" fill="#77818e"/>
+  <rect x="66" y="282" width="368" height="112" rx="8" fill="#24282d" stroke="#363c44"/><rect x="86" y="307" width="146" height="14" rx="3" fill="#c9d1d9"/><rect x="86" y="338" width="295" height="11" rx="3" fill="#65707c"/>
+</svg>

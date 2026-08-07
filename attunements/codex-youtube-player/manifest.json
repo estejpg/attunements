@@ -1,0 +1,42 @@
+{
+  "manifestVersion": 2,
+  "name": "YouTube in Codex",
+  "description": "Show the YouTube video playing in Google Chrome in a compact Codex player.",
+  "preview": "preview.svg",
+  "targets": {
+    "Google Chrome": {
+      "intent": "Publish the active YouTube video URL and playback position to the local Attune bridge.",
+      "bindings": {
+        "document": {
+          "role": "document.body",
+          "required": true
+        },
+        "player": {
+          "role": "youtube.player",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/chrome-youtube-source.css"
+      ],
+      "script": "apps/chrome-youtube-source.js"
+    },
+    "Codex": {
+      "intent": "Display the current YouTube video using YouTube's official embedded player.",
+      "bindings": {
+        "main": {
+          "role": "codex.primaryChat",
+          "required": true
+        },
+        "document": {
+          "role": "document.body",
+          "required": true
+        }
+      },
+      "styles": [
+        "apps/codex-youtube-player.css"
+      ],
+      "script": "apps/codex-youtube-player.js"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 2,
+  "name": "Codex: Commit + Push",
+  "description": "Put native Commit and Push shortcuts beside Codex controls.",
+  "preview": "preview.png",
+  "targets": {
+    "Codex": {
+      "intent": "Add native Commit and Push shortcuts beside the Codex summary and IDE controls.",
+      "bindings": {
+        "main": {
+          "role": "codex.primaryChat",
+          "required": true
+        },
+        "header": {
+          "role": "codex.chatHeader",
+          "required": false
+        }
+      },
+      "styles": [
+        "apps/chatgpt-git-actions.css"
+      ]
+    }
+  }
+}

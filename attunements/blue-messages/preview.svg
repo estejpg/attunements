@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Blue messages attunement preview">
+  <rect width="960" height="600" fill="#f2f2f7"/>
+  <rect x="38" y="34" width="884" height="532" rx="24" fill="#ffffff" stroke="#d1d1d6" stroke-width="2"/>
+  <rect x="38" y="34" width="884" height="58" rx="24" fill="#f9f9fb"/>
+  <circle cx="70" cy="63" r="9" fill="#ff5f57"/><circle cx="96" cy="63" r="9" fill="#febc2e"/><circle cx="122" cy="63" r="9" fill="#28c840"/>
+  <rect x="72" y="122" width="300" height="68" rx="28" fill="#e9e9ed"/>
+  <rect x="72" y="215" width="404" height="18" rx="9" fill="#c7c7cc"/><rect x="72" y="246" width="318" height="18" rx="9" fill="#d1d1d6"/>
+  <rect x="524" y="302" width="334" height="90" rx="32" fill="#007aff"/>
+  <rect x="560" y="332" width="242" height="17" rx="8.5" fill="#ffffff" opacity=".96"/><rect x="560" y="360" width="174" height="17" rx="8.5" fill="#ffffff" opacity=".96"/>
+  <rect x="74" y="435" width="256" height="64" rx="26" fill="#e9e9ed"/>
+</svg>

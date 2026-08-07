@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Codex Git Actions attunement preview">
+  <rect width="960" height="600" fill="#171817"/>
+  <rect x="38" y="38" width="884" height="524" rx="8" fill="#202220" stroke="#393d39" stroke-width="2"/>
+  <rect x="38" y="38" width="884" height="50" rx="8" fill="#292c29"/>
+  <circle cx="66" cy="63" r="7" fill="#7e9682"/>
+  <rect x="94" y="55" width="150" height="16" rx="3" fill="#c8d0c5"/>
+  <rect x="696" y="49" width="42" height="30" rx="5" fill="#303633"/>
+  <rect x="744" y="49" width="76" height="30" rx="5" fill="#3d6049"/>
+  <text x="758" y="69" fill="#e7f2e8" font-family="Arial, sans-serif" font-size="14" font-weight="700">Commit</text>
+  <rect x="826" y="49" width="58" height="30" rx="5" fill="#3f5569"/>
+  <text x="839" y="69" fill="#e8f0f6" font-family="Arial, sans-serif" font-size="14" font-weight="700">Push</text>
+  <rect x="74" y="128" width="504" height="22" rx="3" fill="#d5dbd2"/>
+  <rect x="74" y="170" width="606" height="13" rx="3" fill="#6e756e"/>
+  <rect x="74" y="198" width="552" height="13" rx="3" fill="#5a625b"/>
+  <rect x="74" y="226" width="584" height="13" rx="3" fill="#5a625b"/>
+  <rect x="74" y="282" width="774" height="172" rx="6" fill="#191b1a" stroke="#303430"/>
+  <rect x="96" y="308" width="320" height="12" rx="3" fill="#717b73"/>
+  <rect x="96" y="336" width="690" height="12" rx="3" fill="#4d554f"/>
+  <rect x="96" y="364" width="600" height="12" rx="3" fill="#4d554f"/>
+  <rect x="96" y="392" width="520" height="12" rx="3" fill="#4d554f"/>
+</svg>

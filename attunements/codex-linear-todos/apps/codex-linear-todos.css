@@ -1,0 +1,42 @@
+/* Attune managed: codex-linear-todos */
+#attune-codex-linear-todos-trigger { position: fixed; top: 12px; left: 282px; z-index: 2147483646; display: inline-flex; align-items: center; gap: 7px; height: 30px; padding: 0 10px; border: 1px solid color-mix(in srgb, CanvasText 16%, transparent); border-radius: 7px; background: color-mix(in srgb, Canvas 88%, CanvasText 12%); color: CanvasText; box-shadow: 0 4px 16px rgb(0 0 0 / 18%); cursor: pointer; font: 600 12px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#attune-codex-linear-todos-trigger:hover, #attune-codex-linear-todos-trigger[aria-expanded="true"] { background: color-mix(in srgb, Canvas 76%, CanvasText 24%); }
+#attune-codex-linear-todos-trigger:focus-visible, #attune-codex-linear-todos-modal button:focus-visible, #attune-codex-linear-todos-modal a:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+#attune-codex-linear-todos-modal { position: fixed; top: 48px; left: 282px; z-index: 2147483647; display: block; padding: 0; background: transparent; }
+#attune-codex-linear-todos-modal [role="document"] { width: max-content; max-width: min(220px, calc(100vw - 32px)); overflow: hidden; border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 10px; background: Canvas; color: CanvasText; box-shadow: 0 24px 80px rgb(0 0 0 / 42%); font: 13px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#attune-codex-linear-todos-modal header, #attune-codex-linear-todos-modal .attune-linear-issue-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 14px; }
+#attune-codex-linear-todos-modal header { border-bottom: 1px solid color-mix(in srgb, CanvasText 13%, transparent); }
+#attune-codex-linear-todos-modal h2 { display: inline-flex; align-items: center; gap: 7px; margin: 0; font-size: 14px; line-height: 1.2; }
+#attune-codex-linear-todos-logo { width: 15px; height: 15px; flex: 0 0 15px; }
+#attune-codex-linear-todos-modal button, #attune-codex-linear-todos-modal a { border: 0; border-radius: 6px; padding: 7px 9px; background: color-mix(in srgb, CanvasText 11%, transparent); color: CanvasText; cursor: pointer; font: 600 12px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-decoration: none; }
+#attune-codex-linear-todos-list-wrap { position: relative; display: none; }
+#attune-codex-linear-todos-modal[data-expanded="true"] #attune-codex-linear-todos-list-wrap { display: block; }
+#attune-codex-linear-todos-list { max-height: 156px; margin: 0; padding: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; list-style: none; }
+#attune-codex-linear-todos-list::-webkit-scrollbar { display: none; }
+#attune-codex-linear-todos-list-scrollbar { position: absolute; top: 7px; right: 3px; bottom: 7px; display: none; width: 6px; border-radius: 999px; background: rgb(39 49 63 / 18%); pointer-events: none; }
+#attune-codex-linear-todos-list-scrollbar::after { position: absolute; top: 0; left: 0; width: 100%; height: var(--attune-linear-scroll-thumb-size, 28px); border-radius: inherit; background: rgb(92 115 255 / 78%); content: ''; transform: translateY(var(--attune-linear-scroll-thumb-offset, 0)); }
+#attune-codex-linear-todos-list-wrap[data-scrollable="true"] #attune-codex-linear-todos-list-scrollbar { display: block; }
+#attune-codex-linear-todos-list li { border-bottom: 1px solid color-mix(in srgb, CanvasText 9%, transparent); }
+#attune-codex-linear-todos-list li:last-child { border-bottom: 0; }
+#attune-codex-linear-todos-list button { width: 100%; border-radius: 0; padding: 12px 18px 12px 14px; background: transparent; text-align: left; }
+#attune-codex-linear-todos-list button:hover { background: color-mix(in srgb, CanvasText 8%, transparent); }
+#attune-codex-linear-todos-list strong { display: block; margin-bottom: 3px; color: color-mix(in srgb, CanvasText 76%, #7ca8ff); font-size: 11px; }
+#attune-codex-linear-todos-list .attune-linear-status { display: inline-block; margin-left: 6px; padding: 2px 5px; border-radius: 999px; background: color-mix(in srgb, CanvasText 12%, transparent); color: color-mix(in srgb, CanvasText 76%, #9aa8b8); font-size: 10px; font-style: normal; font-weight: 700; line-height: 1; text-transform: capitalize; }
+#attune-codex-linear-todos-list .attune-linear-status[data-status="backlog"] { background: rgb(132 145 158 / 22%); color: #b6c0ca; }
+#attune-codex-linear-todos-list .attune-linear-status[data-status="todo"] { background: rgb(206 213 223 / 18%); color: #d7dde5; }
+#attune-codex-linear-todos-list .attune-linear-status[data-status="in-progress"], #attune-codex-linear-todos-list .attune-linear-status[data-status="started"] { background: rgb(244 198 0 / 20%); color: #ffd94d; }
+#attune-codex-linear-todos-list .attune-linear-status[data-status="done"], #attune-codex-linear-todos-list .attune-linear-status[data-status="completed"] { background: rgb(92 115 255 / 23%); color: #9cabff; }
+#attune-codex-linear-todos-list .attune-linear-status[data-status="canceled"], #attune-codex-linear-todos-list .attune-linear-status[data-status="duplicate"] { background: rgb(174 184 196 / 16%); color: #9ca7b2; }
+#attune-codex-linear-todos-list span { display: block; }
+#attune-codex-linear-todos-empty { padding: 24px 14px; color: color-mix(in srgb, CanvasText 62%, transparent); text-align: center; }
+#attune-codex-linear-issue-modal { position: fixed; inset: 0; z-index: 2147483648; display: grid; place-items: center; padding: 16px; background: rgb(0 0 0 / 48%); }
+#attune-codex-linear-issue-modal [role="document"] { width: min(420px, calc(100vw - 32px)); border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 10px; background: Canvas; color: CanvasText; box-shadow: 0 24px 80px rgb(0 0 0 / 42%); font: 13px/1.4 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#attune-codex-linear-issue-modal h2 { margin: 0; font-size: 16px; } #attune-codex-linear-issue-modal .attune-linear-issue-copy { max-height: min(560px, calc(100vh - 160px)); padding: 18px; overflow: auto; } #attune-codex-linear-issue-modal .attune-linear-issue-key { margin: 0 0 7px; color: color-mix(in srgb, CanvasText 64%, #7ca8ff); font-size: 12px; } #attune-codex-linear-issue-modal [data-priority] > div { display: flex; flex-wrap: wrap; gap: 6px; } #attune-codex-linear-issue-modal [data-priority] button { border: 0; border-radius: 5px; padding: 6px 8px; background: color-mix(in srgb, CanvasText 10%, transparent); color: CanvasText; cursor: pointer; font: 600 11px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; } #attune-codex-linear-issue-modal footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 18px; border-top: 1px solid color-mix(in srgb, CanvasText 12%, transparent); }
+
+
+
+
+/* Codex has a wider persistent navigation rail than Cursor. */
+#attune-codex-linear-todos-trigger { top: 60px; left: 324px; box-shadow: none; }
+#attune-codex-linear-todos-modal { top: 60px; left: 324px; }
+#attune-codex-linear-todos-modal [role="document"] { box-shadow: none; }
