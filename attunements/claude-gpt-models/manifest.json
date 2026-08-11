@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 2,
+  "name": "Claude: GPT Models",
+  "description": "Keep Claude Desktop's first-party Claude models and add GPT-5.6 Sol, Terra, and Luna to the same native model picker.",
+  "preview": "preview.png",
+  "targets": {
+    "Claude": {
+      "styles": [
+        "apps/claude-gpt-models.css"
+      ],
+      "intent": "Enable Attune's signed-app-safe local Claude bridge, preserving first-party authentication, every native model and its order, and native session history without modifying Claude's bundle or renderer runtime.",
+      "bindings": {
+        "appShell": {
+          "role": "claude.appShell",
+          "required": false
+        },
+        "main": {
+          "role": "claude.primaryChat",
+          "required": false
+        },
+        "composer": {
+          "role": "claude.composer",
+          "required": false
+        },
+        "modelPicker": {
+          "role": "claude.modelPicker",
+          "required": false
+        },
+        "sidebar": {
+          "role": "claude.sidebar",
+          "required": false
+        }
+      }
+    }
+  }
+}

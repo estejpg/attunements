@@ -1,0 +1,4 @@
+/* The native catalog merge is owned by Attune's local bridge; no renderer script is injected. */
+[data-attune-host-roles~="claude.modelPicker"] {
+  --attune-claude-gpt-models-active: 1;
+}
