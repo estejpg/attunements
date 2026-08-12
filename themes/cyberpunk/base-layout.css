@@ -11,14 +11,6 @@ body *:not(.codicon):not([class^="codicon"]):not([class*=" codicon"]) {
   color: var(--att-text-on-dark) !important;
 }
 
-button,
-[role="button"],
-input,
-textarea,
-select {
-  border-radius: 2px !important;
-}
-
 :focus-visible {
   outline: 2px solid var(--att-accent-secondary) !important;
   outline-offset: 2px !important;

@@ -54,10 +54,25 @@ test('Arrakis generates standalone stylesheets for every declared adapter', asyn
     );
 
     if (appName === 'Slack') {
+      assert.match(stylesheet, /@attune-bindings/);
+      assert.match(stylesheet, /data-attune-host-roles~="slack\.composerShell"/);
+      assert.match(stylesheet, /data-attune-host-roles~="slack\.primaryView"/);
       assert.match(stylesheet, /\.p-theme_background/);
       assert.match(stylesheet, /\.p-ia4_top_nav/);
       assert.match(stylesheet, /\.c-wysiwyg_container--theme_dark/);
     }
+
+    if (appName === 'ChatGPT') {
+      assert.match(stylesheet, /data-attune-host-roles~="codex\.composer"/);
+      assert.match(stylesheet, /data-attune-host-roles~="codex\.sidebar"/);
+      assert.doesNotMatch(stylesheet, /\[class\*="bg-purple"\]/);
+    }
+
+    assert.doesNotMatch(
+      stylesheet,
+      /button,\s*\n\[role="button"\],[\s\S]{0,100}border-radius:\s*2px\s*!important/,
+      `${appName} should preserve the host application's native control shapes`,
+    );
 
     if (appName === 'Spotify') {
       assert.match(stylesheet, /\[data-testid="play-button"\][\s\S]*?opacity: 0/);

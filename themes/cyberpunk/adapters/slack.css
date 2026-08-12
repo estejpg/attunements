@@ -1,9 +1,14 @@
-/* Slack: shadow workspace, restrained slate navigation, terracotta action states. */
+/* Slack: neon workspace on semantic, update-resilient surfaces. */
+/* @attune-bindings
+{"schemaVersion":1,"attunementId":"attune-theme-slack","appName":"Slack","bindings":[{"name":"workspace","role":"slack.workspace","required":true},{"name":"topNav","role":"slack.topNav","required":false},{"name":"tabRail","role":"slack.tabRail","required":false},{"name":"sidebar","role":"slack.sidebar","required":false},{"name":"primaryView","role":"slack.primaryView","required":false},{"name":"viewHeader","role":"slack.viewHeader","required":false},{"name":"composer","role":"slack.composer","required":false},{"name":"composerShell","role":"slack.composerShell","required":false},{"name":"sendButton","role":"slack.sendButton","required":false}]}
+@end-attune-bindings */
 :root,
 body,
 .p-client_container,
 .p-workspace,
-#client-ui {
+#client-ui,
+[data-attune-host-roles~="document.body"],
+[data-attune-host-roles~="slack.workspace"] {
   color-scheme: dark;
   --sk_primary_background: var(--att-bg-dark) !important;
   --sk_primary_foreground: var(--att-text-on-dark) !important;
@@ -17,8 +22,8 @@ body,
   --sk_button_primary: var(--att-accent) !important;
   --sk_button_primary_hover: var(--att-accent-hot) !important;
   --sk_button_primary_text: var(--att-text-on-dark) !important;
-  --sk_focus_ring: var(--att-accent-secondary) !important;
-  --sk_a11y_focus_ring: var(--att-surface) !important;
+  --sk_focus_ring: var(--att-accent) !important;
+  --sk_a11y_focus_ring: var(--att-accent) !important;
   --sk_highlight_accent: var(--att-accent) !important;
   --sk_channel_hover: var(--att-panel-dark-soft) !important;
   background: var(--att-bg-dark) !important;
@@ -31,7 +36,9 @@ body,
 #col_messages,
 .p-message_pane,
 .p-message_pane__top_bar,
-.p-ia4_client_header {
+.p-ia4_client_header,
+[data-attune-host-roles~="slack.primaryView"],
+[data-attune-host-roles~="slack.viewHeader"] {
   background: var(--att-bg-dark) !important;
   color: var(--att-text-on-dark) !important;
 }
@@ -43,7 +50,9 @@ body,
 .p-ia4_top_nav,
 .p-ia4_top_nav__container_wrapper,
 .p-ia4_top_nav__middle_container,
-.p-ia4_top_nav__right_container {
+.p-ia4_top_nav__right_container,
+[data-attune-host-roles~="slack.topNav"],
+[data-attune-host-roles~="slack.tabRail"] {
   background: var(--att-panel-dark) !important;
   color: var(--att-text-on-dark) !important;
 }
@@ -70,9 +79,9 @@ body,
   color: var(--att-text-on-dark) !important;
 }
 
-.p-client_container h1,
-.p-client_container h2,
-.p-client_container h3,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) h1,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) h2,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) h3,
 .p-channel_header__channel_name,
 [data-qa="channel_name"] {
   font-family: var(--att-font-display) !important;
@@ -83,7 +92,8 @@ body,
 .p-sidebar,
 #col_channels,
 .p-ia4_sidebar_header,
-.p-ia4_sidebar {
+.p-ia4_sidebar,
+[data-attune-host-roles~="slack.sidebar"] {
   background: var(--att-panel-dark) !important;
   border-right: 1px solid var(--att-rule-dark) !important;
   color: var(--att-text-on-dark) !important;
@@ -130,7 +140,16 @@ body,
 .c-wysiwyg_container,
 .c-wysiwyg_container--theme_dark,
 .ql-editor,
-[data-qa="message_input"] {
+[data-qa="message_input"],
+[data-attune-host-roles~="slack.composer"],
+[data-attune-host-roles~="slack.composerShell"],
+[data-attune-host-roles~="slack.composerShell"] :is(
+  .p-composer__body,
+  .p-message_input__input_container,
+  .c-wysiwyg_container,
+  .c-wysiwyg_container__footer,
+  [role="toolbar"]
+) {
   background: var(--att-panel-dark) !important;
   border-color: var(--att-rule-dark) !important;
   box-shadow: 0 0 0 1px var(--att-rule-dark) !important;
@@ -140,59 +159,84 @@ body,
 .c-wysiwyg_container__footer,
 .c-wysiwyg_container__footer_divider,
 .p-message_input__footer,
-.p-message_input__input_container_unstyled {
+.p-message_input__input_container_unstyled,
+[data-attune-host-roles~="slack.composerShell"] :is(
+  .c-wysiwyg_container__footer,
+  .c-wysiwyg_container__footer_divider,
+  .p-message_input__footer,
+  [role="toolbar"]
+) {
   background: var(--att-panel-dark) !important;
   border-color: var(--att-rule-dark) !important;
   color: var(--att-text-muted-on-dark) !important;
 }
 
-.p-client_container .c-icon_button,
-.p-client_container .c-icon,
-.p-client_container .c-icon_button svg,
-.p-client_container .c-icon_button svg path,
-.p-client_container [data-qa="top-nav"] button,
-.p-client_container [data-qa="view_header"] button {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-icon_button,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-icon,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-icon_button svg,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-icon_button svg path,
+[data-attune-host-roles~="slack.topNav"] button,
+[data-attune-host-roles~="slack.viewHeader"] button {
   color: var(--att-text-muted-on-dark) !important;
 }
 
-.p-client_container .c-icon_button svg path {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-icon_button svg path {
   fill: currentColor !important;
   stroke: currentColor !important;
 }
 
-.p-client_container .c-presence--active,
-.p-client_container [data-qa="presence_indicator"] {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-presence--active,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) [data-qa="presence_indicator"] {
   color: var(--att-accent-secondary) !important;
 }
 
-.p-client_container .c-timestamp__label,
-.p-client_container .ql-placeholder,
-.p-client_container .c-texty_input__placeholder,
-.p-client_container .p-channel_sidebar__link {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-timestamp__label,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .ql-placeholder,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-texty_input__placeholder,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-channel_sidebar__link {
   color: var(--att-text-muted-on-dark) !important;
 }
 
-.p-client_container [role="dialog"],
-.p-client_container [role="menu"],
-.p-client_container .c-menu,
-.p-client_container .c-popover,
-.p-client_container .p-popover,
-.p-client_container .p-flexpane__preview-mode-overlay,
-.p-client_container .p-trouble_loading_container,
-.p-client_container .p-trouble_loading {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) [role="dialog"],
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) [role="menu"],
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-menu,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .c-popover,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-popover,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-flexpane__preview-mode-overlay,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-trouble_loading_container,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-trouble_loading {
   background: var(--att-panel-dark) !important;
   border-color: var(--att-rule-dark) !important;
   color: var(--att-text-on-dark) !important;
 }
 
-.p-client_container .p-team_sidebar__shortcut_hint,
-.p-client_container .p-tab_rail__shortcut_hint {
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-team_sidebar__shortcut_hint,
+:is(.p-client_container, [data-attune-host-roles~="slack.workspace"]) .p-tab_rail__shortcut_hint {
   background: var(--att-surface-strong) !important;
   color: var(--att-bg-dark) !important;
 }
 
 button[data-qa="texty_send_button"],
-.p-composer__button--send {
+.p-composer__button--send,
+[data-attune-host-roles~="slack.sendButton"] {
   background: var(--att-accent) !important;
   color: var(--att-text-on-dark) !important;
+}
+
+[data-attune-host-roles~="slack.composerShell"] [role="toolbar"] button:not([data-attune-host-roles~="slack.sendButton"]) {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+[data-attune-host-roles~="slack.composerShell"] div {
+  background-color: transparent !important;
+}
+
+[data-attune-host-roles~="slack.composerShell"]:focus-within {
+  border-color: var(--att-accent) !important;
+  box-shadow: 0 0 0 1px var(--att-accent) !important;
+}
+
+[data-attune-host-roles~="slack.composerShell"] :focus-visible {
+  outline: none !important;
 }
