@@ -8,7 +8,7 @@
       "styles": [
         "apps/claude-gpt-models.css"
       ],
-      "intent": "Enable Attune's signed-app-safe local Claude bridge, preserving first-party authentication, every native model and its order, and native session history without modifying Claude's bundle or renderer runtime.",
+      "intent": "Enable Attune's signed-app-safe local Claude bridge, preserving Claude's first-party authentication, every native model and its order, and native session history while GPT uses the installed Codex runtime's managed local account without copied tokens and without modifying Claude's bundle or renderer runtime.",
       "bindings": {
         "appShell": {
           "role": "claude.appShell",
