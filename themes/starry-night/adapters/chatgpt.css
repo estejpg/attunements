@@ -1,9 +1,9 @@
 /* ChatGPT/Codex: Starry Night shell on semantic, update-resilient surfaces. */
 /* @attune-bindings
-{"schemaVersion":1,"attunementId":"attune-theme-chatgpt","appName":"ChatGPT","bindings":[{"name":"document","role":"document.body","required":true},{"name":"main","role":"codex.primaryChat","required":false},{"name":"timeline","role":"codex.timeline","required":false},{"name":"composer","role":"codex.composer","required":false},{"name":"header","role":"codex.chatHeader","required":false},{"name":"sidebar","role":"codex.sidebar","required":false},{"name":"conversation","role":"chatgpt.conversation","required":false},{"name":"chatgptComposer","role":"chatgpt.composer","required":false},{"name":"submitButton","role":"codex.submitButton","required":false}]}
+{"schemaVersion":1,"attunementId":"attune-theme-chatgpt","appName":"ChatGPT","bindings":[{"name":"document","role":"document.body","required":true},{"name":"main","role":"codex.primaryChat","required":false},{"name":"timeline","role":"codex.timeline","required":false},{"name":"composer","role":"codex.composer","required":false},{"name":"composerSurface","role":"codex.composerSurface","required":false},{"name":"header","role":"codex.chatHeader","required":false},{"name":"sidebar","role":"codex.sidebar","required":false},{"name":"conversation","role":"chatgpt.conversation","required":false},{"name":"chatgptComposer","role":"chatgpt.composer","required":false},{"name":"submitButton","role":"codex.submitButton","required":false}]}
 @end-attune-bindings */
 :root {
-  color-scheme: dark;
+  color-scheme: dark !important;
   --main-surface-background: var(--att-surface-light) !important;
   --main-surface-secondary: var(--att-surface) !important;
   --sidebar-surface-primary: var(--att-panel-dark) !important;
@@ -34,6 +34,162 @@
   --color-token-button-foreground: var(--att-text-on-dark) !important;
   --color-token-primary: var(--att-accent) !important;
   --color-token-link: var(--att-accent-secondary) !important;
+}
+
+/*
+ * Codex publishes a second, newer token layer that the --color-token-* names
+ * above now derive from: a neutral --gray-* ramp plus semantic --color-* roles,
+ * declared once per prebuilt mode on <html class="electron-light|electron-dark">
+ * and repeated as an inline style on the same element. Nothing in either copy is
+ * important, so an important author declaration outranks both and the theme
+ * renders the same whichever mode the shell is in.
+ *
+ * This layer is what actually paints the content fade gradients, the composer
+ * chrome, and every run of body copy, so it has to be retinted here — otherwise
+ * the host defaults show through as white fades, a white chat box, and message
+ * text that keeps the host's ink color on the theme's canvas.
+ */
+:root,
+:host {
+  /* Neutral ramp, kept in the app's light-to-dark order on the theme's own ramp. */
+  --gray-0: var(--att-surface-light) !important;
+  --gray-50: var(--att-surface-light) !important;
+  --gray-75: color-mix(in srgb, var(--att-surface-light) 92%, var(--att-surface)) !important;
+  --gray-100: var(--att-surface) !important;
+  --gray-150: var(--att-surface) !important;
+  --gray-200: var(--att-surface-strong) !important;
+  --gray-300: var(--att-rule-light) !important;
+  --gray-400: var(--att-muted-strong) !important;
+  --gray-500: var(--att-muted-strong) !important;
+  --gray-550: var(--att-rule-dark) !important;
+  --gray-600: var(--att-rule-dark) !important;
+  --gray-650: var(--att-panel-dark-soft) !important;
+  --gray-700: var(--att-panel-dark-soft) !important;
+  --gray-750: var(--att-panel-dark) !important;
+  --gray-800: var(--att-panel-dark) !important;
+  --gray-900: var(--att-bg-dark) !important;
+  --gray-950: var(--att-bg-dark) !important;
+  --gray-1000: var(--att-bg-dark) !important;
+  --codex-base-surface: var(--att-surface-light) !important;
+  --codex-base-ink: var(--att-text-on-light) !important;
+  --codex-base-accent: var(--att-accent) !important;
+
+  /*
+   * Canvas. --color-surface is also both ends of the top and bottom content
+   * fades, which are gradients from this token to transparent.
+   */
+  --color-surface: var(--att-surface-light) !important;
+  --color-surface-secondary: var(--att-surface) !important;
+  --color-surface-tertiary: var(--att-surface-strong) !important;
+  --color-surface-elevated: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-surface-elevated-secondary: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-surface: var(--att-surface-light) !important;
+  --color-background-surface-under: var(--att-surface) !important;
+  --color-background-panel: var(--att-surface-light) !important;
+  --color-background-editor-opaque: var(--att-surface-light) !important;
+  --color-background-control: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-control-opaque: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-elevated-primary: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-elevated-primary-opaque: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-elevated-secondary: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-elevated-secondary-opaque: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-application-menu: var(--att-surface) !important;
+  --color-foreground-application-menu: var(--att-text-on-light) !important;
+  --color-codex-application-menu: var(--att-surface) !important;
+  --color-codex-application-menu-selection: color-mix(in srgb, var(--att-accent) 26%, transparent) !important;
+
+  /*
+   * Composer chrome. The chat box fills itself from
+   * --composer-layout-surface-background, which the app mixes down from
+   * --color-background-primary-soft, so this token is what tints the text box.
+   */
+  --color-background-primary-soft: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  --color-background-primary-soft-active: color-mix(in srgb, var(--att-accent) 16%, transparent) !important;
+  --color-background-primary-soft-alpha: color-mix(in srgb, var(--att-surface-strong) 30%, transparent) !important;
+  --color-background-primary-ghost-hover: color-mix(in srgb, var(--att-accent) 12%, transparent) !important;
+  --color-background-primary-solid: var(--att-accent) !important;
+  --color-background-secondary-soft: color-mix(in srgb, var(--att-surface-strong) 45%, transparent) !important;
+  --color-background-secondary-soft-alpha: color-mix(in srgb, var(--att-surface-strong) 45%, transparent) !important;
+  --color-background-button-primary: var(--att-accent) !important;
+  --color-background-button-primary-hover: var(--att-accent-hot) !important;
+  --color-background-button-primary-active: var(--att-accent-hot) !important;
+  --color-background-button-primary-inactive: color-mix(in srgb, var(--att-accent) 45%, transparent) !important;
+  --color-background-button-secondary: color-mix(in srgb, var(--att-surface-strong) 45%, transparent) !important;
+  --color-background-button-secondary-hover: color-mix(in srgb, var(--att-surface-strong) 62%, transparent) !important;
+  --color-background-button-secondary-active: color-mix(in srgb, var(--att-surface-strong) 70%, transparent) !important;
+  --color-background-button-secondary-inactive: color-mix(in srgb, var(--att-surface-strong) 26%, transparent) !important;
+  --color-background-button-tertiary: transparent !important;
+  --color-background-button-tertiary-hover: color-mix(in srgb, var(--att-accent) 14%, transparent) !important;
+  --color-background-button-tertiary-active: color-mix(in srgb, var(--att-accent) 22%, transparent) !important;
+
+  /* Body copy. These are the names the message timeline reads its ink from. */
+  --color-text: var(--att-text-on-light) !important;
+  --color-text-foreground: var(--att-text-on-light) !important;
+  --color-text-emphasis: var(--att-text-on-light) !important;
+  --color-text-secondary: var(--att-text-muted-on-light) !important;
+  --color-text-secondary-solid: var(--att-text-muted-on-light) !important;
+  --color-text-foreground-secondary: var(--att-text-muted-on-light) !important;
+  --color-text-tertiary: var(--att-muted-strong) !important;
+  --color-text-foreground-tertiary: var(--att-muted-strong) !important;
+  --color-text-disabled: color-mix(in srgb, var(--att-text-muted-on-light) 62%, transparent) !important;
+  --color-text-inverse: var(--att-text-on-dark) !important;
+  --color-text-on-accent: var(--att-text-on-dark) !important;
+  --color-text-primary-solid: var(--att-text-on-dark) !important;
+  --color-text-button-primary: var(--att-text-on-dark) !important;
+  --color-text-button-secondary: var(--att-text-on-light) !important;
+  --color-text-button-tertiary: var(--att-text-muted-on-light) !important;
+  --color-codex-description: var(--att-text-muted-on-light) !important;
+  --color-icon-primary: var(--att-text-on-light) !important;
+  --color-icon-secondary: var(--att-text-muted-on-light) !important;
+  --color-icon-tertiary: var(--att-muted-strong) !important;
+  --color-icon-accent: var(--att-accent) !important;
+  --color-codex-icon: var(--att-text-muted-on-light) !important;
+  --color-codex-icon-active: var(--att-text-on-light) !important;
+  --color-decoration-unchanged: var(--att-muted-strong) !important;
+
+  --color-border: color-mix(in srgb, var(--att-rule-light) 55%, transparent) !important;
+  --color-border-light: color-mix(in srgb, var(--att-rule-light) 34%, transparent) !important;
+  --color-border-subtle: color-mix(in srgb, var(--att-rule-light) 34%, transparent) !important;
+  --color-border-heavy: var(--att-rule-light) !important;
+  --color-border-strong: var(--att-rule-light) !important;
+  --color-border-primary-outline: var(--att-rule-light) !important;
+  --color-border-application-menu-separator: var(--att-rule-light) !important;
+  --color-border-focus: var(--att-accent-secondary) !important;
+  --color-ring: var(--att-accent-secondary) !important;
+  --color-codex-radio-inactive: var(--att-rule-light) !important;
+  --color-simple-scrim: color-mix(in srgb, var(--att-bg-dark) 55%, transparent) !important;
+
+  --color-accent-blue: var(--att-accent) !important;
+  --color-accent-purple: var(--att-accent-secondary) !important;
+  --color-text-accent: var(--att-accent-secondary) !important;
+  --color-text-info: var(--att-accent-secondary) !important;
+  --color-text-tip: var(--att-accent-secondary) !important;
+  --color-text-tip-badge: var(--att-accent-secondary) !important;
+  --color-background-accent: color-mix(in srgb, var(--att-accent) 16%, var(--att-surface-light)) !important;
+  --color-background-accent-hover: color-mix(in srgb, var(--att-accent) 22%, var(--att-surface-light)) !important;
+  --color-background-accent-active: color-mix(in srgb, var(--att-accent) 28%, var(--att-surface-light)) !important;
+  --color-background-info-soft: color-mix(in srgb, var(--att-accent-secondary) 16%, var(--att-surface-light)) !important;
+  --color-background-info-surface: color-mix(in srgb, var(--att-accent-secondary) 12%, var(--att-surface-light)) !important;
+  --color-background-info-solid: var(--att-accent-secondary) !important;
+  --color-background-tip-soft: color-mix(in srgb, var(--att-accent-secondary) 14%, var(--att-surface-light)) !important;
+  --color-background-tip-badge: color-mix(in srgb, var(--att-accent-secondary) 14%, var(--att-surface-light)) !important;
+
+  --color-codex-terminal-background: var(--att-bg-dark) !important;
+  --color-codex-terminal-foreground: var(--att-text-on-dark) !important;
+  --color-codex-terminal-selection: color-mix(in srgb, var(--att-accent) 32%, transparent) !important;
+  --color-codex-terminal-selection-inactive: color-mix(in srgb, var(--att-accent) 18%, transparent) !important;
+  --color-codex-editor-cursor: var(--att-accent) !important;
+  --color-codex-editor-inline-code-background: color-mix(in srgb, var(--att-surface-strong) 55%, transparent) !important;
+  --color-codex-editor-inline-code-foreground: var(--att-text-on-light) !important;
+  --color-codex-editor-line-highlight: color-mix(in srgb, var(--att-accent) 8%, transparent) !important;
+  --color-codex-diff-surface: color-mix(in srgb, var(--att-surface-light) 94%, var(--att-text-on-light)) !important;
+  --color-codex-drop-overlay: color-mix(in srgb, var(--att-accent) 22%, transparent) !important;
+  --color-codex-drop-prompt: color-mix(in srgb, var(--att-accent) 22%, var(--att-surface-light)) !important;
+
+  /*
+   * Status hues (success, danger, warning, git and diff decorations) keep the
+   * app's palette so error and diff states still read as error and diff states.
+   */
 }
 
 html,
@@ -141,11 +297,30 @@ body:has(.codex-avatar-root) main {
   box-shadow: 0 12px 30px color-mix(in srgb, var(--att-bg-dark) 12%, transparent) !important;
 }
 
+/*
+ * The painted chat box. codex.composerSurface resolves to whichever element
+ * carries the rounded chrome; the class prefix is a fallback for the frames
+ * before the runtime has annotated roles, matched on the stable part of the
+ * CSS-module name rather than its build-hashed suffix. Both variants of the
+ * surface derive their fill from --composer-layout-surface-background, and
+ * their selectors outrank :root, so the token is reset on the element itself.
+ */
+[data-attune-host-roles~="codex.composerSurface"],
+[class*="_ComposerLayoutRoot_"],
 .composer-surface-chrome {
-  background: color-mix(in srgb, var(--att-surface-light) 84%, var(--att-surface-strong)) !important;
-  border: 1px solid color-mix(in srgb, var(--att-rule-light) 78%, var(--att-bg-dark)) !important;
+  --composer-layout-surface-background: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  background: color-mix(in srgb, var(--att-surface-light) 86%, var(--att-surface-strong)) !important;
+  border-color: color-mix(in srgb, var(--att-rule-light) 78%, var(--att-bg-dark)) !important;
   color: var(--att-text-on-light) !important;
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--att-bg-dark) 14%, transparent) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--att-rule-light) 78%, var(--att-bg-dark)),
+    0 12px 30px color-mix(in srgb, var(--att-bg-dark) 14%, transparent) !important;
+}
+
+[data-attune-host-roles~="codex.composerSurface"] [class*="text-token"],
+[data-attune-host-roles~="codex.composerSurface"] [class*="text-secondary"],
+[data-attune-host-roles~="codex.composerSurface"] [class*="text-tertiary"] {
+  color: var(--att-text-muted-on-light) !important;
 }
 
 .home-banners [class*="bg-token-input-background"] {
