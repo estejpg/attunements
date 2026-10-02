@@ -1,7 +1,7 @@
 {
   "manifestVersion": 2,
   "name": "Claude: GPT Models",
-  "description": "Keep Claude Desktop's first-party Claude models and add GPT-5.6 Sol, Terra, and Luna to the same native model picker.",
+  "description": "Keep Claude Desktop's first-party Claude models and add GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna to the same native model picker.",
   "preview": "preview.png",
   "targets": {
     "Claude": {

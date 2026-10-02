@@ -1,7 +1,7 @@
 {
   "manifestVersion": 2,
   "name": "ChatGPT: External CLI Models",
-  "description": "Add Claude Fable 5, Claude Opus 5, Grok 4.5, Cursor, and Copilot to the ChatGPT desktop Codex model picker using their authenticated local CLIs.",
+  "description": "Add Claude Fable 5, Claude Opus 5, Grok 4.7, Cursor, and Copilot to the ChatGPT desktop Codex model picker using their authenticated local CLIs.",
   "preview": "preview.png",
   "targets": {
     "ChatGPT": {

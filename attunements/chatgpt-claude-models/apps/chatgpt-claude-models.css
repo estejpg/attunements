@@ -1,7 +1,7 @@
 /*
  * ChatGPT Codex: External CLI Models
  *
- * Claude Fable 5, Claude Opus 5, Grok 4.5, Cursor, and Copilot
+ * Claude Fable 5, Claude Opus 5, Grok 4.7, Cursor, and Copilot
  * are registered through Attune's provider-neutral app-server proxy.
  * ChatGPT renders the model rows and turns with its own components. The
  * scoped script below only supplies provider submenus that Codex does not
