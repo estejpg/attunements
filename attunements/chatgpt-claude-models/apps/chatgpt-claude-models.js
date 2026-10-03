@@ -17,6 +17,9 @@
   ]);
   const pending = new Map();
   const rowHandlers = new Map();
+  const nativeSelectionRows = new WeakSet();
+  const modelRowSelector = '[role="menuitem"], [role="menuitemradio"], [role="option"]';
+  const modelPaletteSelector = '[role="menu"], [role="listbox"]';
   let sequence = 0;
   let catalog = null;
   let supportsPendingNewThreadSelection = false;
@@ -194,9 +197,9 @@
       check.classList.remove('attune-stale-native-model-check');
     });
     if (!activeProvider()) return;
-    document.querySelectorAll('[role="menu"]').forEach((palette) => {
+    document.querySelectorAll(modelPaletteSelector).forEach((palette) => {
       if (!palette.querySelector('[data-attune-provider-model-row="true"]')) return;
-      palette.querySelectorAll('[role="menuitem"]').forEach((row) => {
+      palette.querySelectorAll(modelRowSelector).forEach((row) => {
         const nativeCheck = row.querySelector(
           ':scope > div > svg[width="17"][height="17"]',
         );
@@ -454,13 +457,22 @@
   };
 
   const onNativeModelSelected = (event) => {
-    const row = event.target.closest?.('[role="menuitem"]');
+    // A freshly mounted picker can be clicked before the next observer frame.
+    decorateRows();
+    const row = event.target.closest?.(modelRowSelector);
+    if (row?.dataset.attuneProviderModelRow === 'true'
+      && !nativeSelectionRows.has(row)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      void openProviderMenu(row, row.dataset.attuneProviderId);
+      return;
+    }
     if (
       !row
       || row.dataset.attuneProviderModelRow === 'true'
       || row.closest('.attune-provider-model-menu')
     ) return;
-    const palette = row.closest('[role="menu"]');
+    const palette = row.closest(modelPaletteSelector);
     if (!palette?.querySelector('[data-attune-provider-model-row="true"]')) {
       const setting = row.textContent?.replace(/\s+/g, ' ').trim() || '';
       if (
@@ -595,9 +607,11 @@
     if (!row) return false;
     const handlers = rowHandlers.get(row);
     if (handlers) row.removeEventListener('click', handlers.click, true);
+    nativeSelectionRows.add(row);
     try {
       row.click();
     } finally {
+      nativeSelectionRows.delete(row);
       if (handlers && row.isConnected) {
         row.addEventListener('click', handlers.click, true);
       }
@@ -773,7 +787,7 @@
       }, 700);
     }
     syncActiveModelLabel();
-    const rows = [...document.querySelectorAll('[role="menuitem"]')];
+    const rows = [...document.querySelectorAll(modelRowSelector)];
     for (const row of rows) {
       // Nested model buttons are menuitems too. A legitimate model such as
       // "Cursor Small" must never be reinterpreted as another provider row.
@@ -815,6 +829,7 @@
           },
           leave: scheduleClose,
           click: (event) => {
+            if (nativeSelectionRows.has(row)) return;
             event.preventDefault();
             event.stopImmediatePropagation();
             void openProviderMenu(row, providerId, label);
@@ -839,12 +854,45 @@
     subtree: true,
   });
   const onDocumentPointerDown = (event) => {
+    // Radix selects some rows on pointerdown, before our click handler runs.
+    // Decorate synchronously and keep the parent picker open for the submenu.
+    if (activeMenu?.contains(event.target)) {
+      event.stopImmediatePropagation();
+      return;
+    }
+    decorateRows();
+    const row = event.target.closest?.('[data-attune-provider-model-row="true"]');
+    if (row && !nativeSelectionRows.has(row)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      void openProviderMenu(row, row.dataset.attuneProviderId);
+      return;
+    }
     if (
       activeMenu
       && !activeMenu.contains(event.target)
       && !event.target.closest?.('[data-attune-provider-model-row="true"]')
     ) closeMenu();
   };
+  const onProviderKeyDown = (event) => {
+    const row = event.target.closest?.(modelRowSelector);
+    if (row && ['ArrowRight', 'Enter', ' '].includes(event.key)) {
+      decorateRows();
+      if (row.dataset.attuneProviderModelRow !== 'true') return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      void openProviderMenu(row, row.dataset.attuneProviderId).then(() => {
+        activeMenu?.querySelector('button:not(:disabled)')?.focus();
+      });
+    } else if (activeMenu && event.key === 'Escape') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const parent = activeProviderRow;
+      closeMenu();
+      parent?.focus();
+    }
+  };
+  document.addEventListener('keydown', onProviderKeyDown, true);
   document.addEventListener('pointerdown', onDocumentPointerDown, true);
   document.addEventListener('click', onNativeModelSelected, true);
   window.addEventListener('message', onMessage);
@@ -855,6 +903,7 @@
     observer.disconnect();
     if (scheduled) window.cancelAnimationFrame(scheduled);
     closeMenu();
+    document.removeEventListener('keydown', onProviderKeyDown, true);
     document.removeEventListener('pointerdown', onDocumentPointerDown, true);
     document.removeEventListener('click', onNativeModelSelected, true);
     window.removeEventListener('message', onMessage);
