@@ -8,7 +8,7 @@
   ],
   "attunements": [
     { "id": "blue-messages", "version": "1.0.0", "path": "attunements/blue-messages" },
-    { "id": "chatgpt-claude-models", "version": "1.0.1", "path": "attunements/chatgpt-claude-models" },
+    { "id": "chatgpt-claude-models", "version": "1.0.2", "path": "attunements/chatgpt-claude-models" },
     { "id": "chatgpt-to-codex", "version": "1.0.0", "path": "attunements/chatgpt-to-codex" },
     { "id": "claude-gpt-models", "version": "3.0.1", "path": "attunements/claude-gpt-models" },
     { "id": "codex-git-actions", "version": "1.0.0", "path": "attunements/codex-git-actions" },
